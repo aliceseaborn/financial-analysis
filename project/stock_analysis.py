@@ -18,7 +18,7 @@ __status__ = "Prototype"
 
 # ------------------------- RATES OF RETURN ------------------------- #
 
-def daily_stock_rate_of_return(Stock, mode='s', start_date=None, end_date=None):
+def daily_stock_rate_of_return(stock, mode='s', start_date=None, end_date=None):
     """Series of daily simple or logarithmic rates of return between the given
     dates. Returns are not expressed as a percentage.
     
@@ -28,7 +28,7 @@ def daily_stock_rate_of_return(Stock, mode='s', start_date=None, end_date=None):
 
     Parameters
     ----------
-    Stock : Stock object.
+    stock : Stock object.
         The stock for analysis.
     start_date : String.
         Sets the start of the stock analysis. Format 'YYYY-MM-DD'.
@@ -41,11 +41,11 @@ def daily_stock_rate_of_return(Stock, mode='s', start_date=None, end_date=None):
     """
 
     if not start_date:
-        start_date = Stock.history.iloc[0,0]
+        start_date = stock.history.iloc[0,0]
     if not end_date:
-        end_date = Stock.history.iloc[len(Stock.history)-1,0]
+        end_date = stock.history.iloc[len(stock.history)-1,0]
         
-    selection = Stock.history.query(f"Date >= '{start_date}' and Date " \
+    selection = stock.history.query(f"Date >= '{start_date}' and Date " \
                                   "<= '{end_date}'").reset_index(drop=True)
     dates = selection.iloc[:,0]
         
@@ -60,12 +60,12 @@ def daily_stock_rate_of_return(Stock, mode='s', start_date=None, end_date=None):
         
     stock_daily_ror = pd.concat([dates, returns], axis=1)
     stock_daily_ror = stock_daily_ror.rename(columns={"Date": "Date", \
-                                                      "Adj Close": Stock.ticker + " ROR"})
+                                                      "Adj Close": stock.ticker + " ROR"})
     
     return stock_daily_ror 
 
 
-def average_daily_stock_rate_of_return(Stock, mode='s', start_date=None, end_date=None):
+def average_daily_stock_rate_of_return(stock, mode='s', start_date=None, end_date=None):
     """Average daily simple or logarithmic rate of return between the given
     dates. Average return is expressed as a percentage.
     
@@ -74,7 +74,7 @@ def average_daily_stock_rate_of_return(Stock, mode='s', start_date=None, end_dat
 
     Parameters
     ----------
-    Stock : Stock object.
+    stock : Stock object.
         The stock for analysis.
     start_date : String.
         Sets the start of the stock analysis. Format 'YYYY-MM-DD'.
@@ -86,13 +86,13 @@ def average_daily_stock_rate_of_return(Stock, mode='s', start_date=None, end_dat
     A Pandas DataFrame object.
     """
 
-    daily_ror = daily_stock_rate_of_return(Stock, mode, start_date, end_date)
+    daily_ror = daily_stock_rate_of_return(stock, mode, start_date, end_date)
     average_daily_ror = daily_ror.iloc[:,1].mean() * 100
     
     return average_daily_ror
 
 
-def average_annual_stock_rate_of_return(Stock, mode='s', start_date=None, end_date=None):
+def average_annual_stock_rate_of_return(stock, mode='s', start_date=None, end_date=None):
     """Average annual simple or logarithmic rate of return between the given
     dates.
     
@@ -101,7 +101,7 @@ def average_annual_stock_rate_of_return(Stock, mode='s', start_date=None, end_da
 
     Parameters
     ----------
-    Stock : Stock object.
+    stock : Stock object.
         The stock for analysis.
     start_date : String.
         Sets the start of the stock analysis. Format 'YYYY-MM-DD'.
@@ -113,7 +113,7 @@ def average_annual_stock_rate_of_return(Stock, mode='s', start_date=None, end_da
     A Pandas DataFrame object.
     """
 
-    average_daily_ror = average_daily_stock_rate_of_return(Stock, mode, start_date, \
+    average_daily_ror = average_daily_stock_rate_of_return(stock, mode, start_date, \
                                                      end_date)
     average_annual_ror = average_daily_ror * 250
     
@@ -122,7 +122,7 @@ def average_annual_stock_rate_of_return(Stock, mode='s', start_date=None, end_da
 
 # ------------------------- VOLATILITY ------------------------- #
 
-def stock_annual_volatility(Stock, start_date=None, end_date=None):
+def stock_annual_volatility(stock, start_date=None, end_date=None):
     """Annual standard deviation of the stock returns over the specified period.
     The standard deviation is expressed as a percentage.
 
@@ -131,7 +131,7 @@ def stock_annual_volatility(Stock, start_date=None, end_date=None):
 
     Parameters
     ----------
-    Stock : Stock object.
+    stock : Stock object.
         The stock for analysis.
     start_date : String.
         Sets the start of the stock analysis. Format 'YYYY-MM-DD'.
@@ -143,18 +143,18 @@ def stock_annual_volatility(Stock, start_date=None, end_date=None):
     A Pandas DataFrame object.
     """
 
-    stock_ror = daily_stock_rate_of_return(Stock, 's', start_date, end_date)
+    stock_ror = daily_stock_rate_of_return(stock, 's', start_date, end_date)
     stock_std = stock_ror.iloc[:,1].std() * 250 * 100
     
     stock_std = pd.DataFrame(data=[stock_std], 
-                             columns=[Stock.ticker + " Standard Deviation"])
+                             columns=[stock.ticker + " Standard Deviation"])
     
     return stock_std
 
 
 # ------------------------- VARIANCE ------------------------- #
 
-def stock_annual_variance(Stock, start_date=None, end_date=None):
+def stock_annual_variance(stock, start_date=None, end_date=None):
     """Annual variance of the stock returns over the specified period.
     The variance is not expressed as a percentage.
     
@@ -163,7 +163,7 @@ def stock_annual_variance(Stock, start_date=None, end_date=None):
     
     Parameters
     ----------
-    Stock : Stock object.
+    stock : Stock object.
         The stock for analysis.
     start_date : String.
         Sets the start of the stock analysis. Format 'YYYY-MM-DD'.
@@ -175,27 +175,27 @@ def stock_annual_variance(Stock, start_date=None, end_date=None):
     A Pandas DataFrame object.
     """
 
-    stock_ror = daily_stock_rate_of_return(Stock, 's', start_date, end_date)
+    stock_ror = daily_stock_rate_of_return(stock, 's', start_date, end_date)
     stock_var = stock_ror.iloc[:,1].var() * 250
     
     stock_var = pd.DataFrame(data=[stock_var], 
-                             columns=[Stock.ticker + " Variance"])
+                             columns=[stock.ticker + " Variance"])
     
     return stock_var
 
 
 # ------------------------- STOCK BETA ------------------------- #
 
-def stock_beta(Stock, Index, start_date=None, end_date=None):
-    """The beta for the Stock against the provided market index.
+def stock_beta(stock, index, start_date=None, end_date=None):
+    """The beta for the stock against the provided market index.
     
         BETA = COV( STOCK RETURNS, INDEX RETURNS ) / VAR( INDEX )
     
     Parameters
     ----------
-    Portfolio : Stock object.
+    stock : Stock object.
         A stock for correlation analysis.
-    Index : Stock object.
+    index : Stock object.
         A stock representing the provided composite market index.
     start_date : String.
         Sets the start of the correlation study. Format 'YYYY-MM-DD'.
@@ -208,7 +208,7 @@ def stock_beta(Stock, Index, start_date=None, end_date=None):
     """
 
     stock_ret = daily_stock_rate_of_return(stock, 'l', start_date, end_date)
-    index_ret = daily_stock_rate_of_return(Index, 'l', start_date, end_date)
+    index_ret = daily_stock_rate_of_return(index, 'l', start_date, end_date)
 
     covariance = np.cov(stock_ret.iloc[:,1], index_ret.iloc[:,1])[0,0]
     variance = np.var(index_ret.iloc[:,1])

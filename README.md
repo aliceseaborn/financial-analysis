@@ -26,8 +26,6 @@ This repository contains:
 
 This library focuses on providing financial analysis tools. The technical analysis of equities in Python is a difficult and quite often messy undertaking. The objects created herein are designed to do the heavy lifting for the user without sacrificing configurability. The user can simply direct the analysis and consume the output without having to worry about setting up data pipelines into various stock data providers. This library was built on top of Pandas for the analysis of DataFrames instead of using POPOs. Consequently, some operations might be compute intensive but the code has been optimized for Pandas wherever possible.
 
-There are two types of domain objects that can be analyzed by this library: Stock and Portfolio objects. To avoid confusion with instances of the Stock object, the domain model representation is named StockModel.
-
 A Stock object has a descriptive string name of the equity as well as a string ticker to identify it. In addition to descriptive information, each stock contains data of its price history in the form of a Pandas DataFrame object.
 
 A Portfolio object also has a descriptive string name to identify it. Each Portfolio contains a list of Stock objects representing its investments as well as a Numpy array of the proportion of the Portfolio's funds that are dedicated to each Stock.
@@ -47,9 +45,9 @@ Import the `StockModel` and the `PortfolioModel` model from the `domain` folder 
 ```python
 >>> from domain.Stock import StockModel
 >>> from domain.Portfolio import PortfolioModel
->>> PG = StockModel("PG", "Proctor & Gamble Co.", pg_history)
->>> MSFT = StockModel("MSFT", "Microsoft Inc.", msft_history)
->>> BlueChips = PortfolioModel("Blue Chips", [PG, MSFT], np.array([ [0.25], [0.75] ]))
+>>> PG = Stock("PG", "Proctor & Gamble Co.", pg_history)
+>>> MSFT = Stock("MSFT", "Microsoft Inc.", msft_history)
+>>> BlueChips = Portfolio("Blue Chips", [PG, MSFT], np.array([ [0.25], [0.75] ]))
 ```
 
 ### Analyze Stock
