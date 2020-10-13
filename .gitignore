@@ -1,0 +1,12 @@
+# Ignore egg files
+*.egg*
+
+# Ignore python cache files
+**/__pycache__*
+
+# Ignore Python Notebooks
+**.ipynb_checkpoints/*
+**/.ipynb_checkpoints/*
+
+# Ignore the testing report unless added manually
+project/tests/report.html
