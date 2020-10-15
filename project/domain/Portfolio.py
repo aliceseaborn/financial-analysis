@@ -15,7 +15,7 @@ __author__ = "Austin Dial, Alice Seaborn"
 
 __version__ = "0.0.0"
 __maintainer__ = "Alice Seaborn"
-__email__ = "adial@mail.bradley.edu"
+__email__ = "seaborn.archipelago@gmail.com"
 __status__ = "Prototype"
 
 
