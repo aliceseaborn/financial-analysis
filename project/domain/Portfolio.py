@@ -72,7 +72,7 @@ class Portfolio(object):
     
     
     def daily_excess_rates_of_return(self, risk_free_rate, start_date=None, end_date=None):
-        """Calculates the combined portfolio returns after considering the 
+        """Calculates the combined portfolio returns after considering the
         risk free rate of return. This represents the excess returns the
         portfolio yields as a result of taking risk.
 
@@ -320,8 +320,3 @@ class Portfolio(object):
         plt.close()
 
         return data
-
-
-
-
-
