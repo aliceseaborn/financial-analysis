@@ -8,5 +8,7 @@
 **.ipynb_checkpoints/*
 **/.ipynb_checkpoints/*
 
-# Ignore the testing report unless added manually
+# Testing reports
+.pytest_cache/*
+.coverage
 project/tests/report.html
