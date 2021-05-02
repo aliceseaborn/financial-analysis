@@ -2,16 +2,23 @@ version: 2.1
 
 jobs:
   build-test:
-    docker:
-      - image: circleci/python:3.8.8
+    executor: python/default
     steps:
       - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: requirements.txt
+          pkg-manager: pip
+      - python/install-packages:
+          args: pytest
+          pkg-manager: pip
+          pypi-cache: false
       - run:
           command: |
-            sudo pip install pipenv
-            pipenv install
             make test
             make lint
+          name: Test & lint
 
 workflows:
   main:
