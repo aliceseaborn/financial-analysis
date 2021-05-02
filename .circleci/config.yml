@@ -1,24 +1,20 @@
-version: 2.1
-
-orbs:
-  python: circleci/python@0.2.1
+version: 2
 
 jobs:
-  build-and-test:
-    executor: python/default
+  build-test-lint:
+    working_directory: /home/circleci
+    docker:
+      - image: circleci/python:3.8.8
     steps:
       - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
       - run:
-          name: 
           command: |
             make setup
-            source ~/.financial-analysis/bin/activate
-            make all
+            . /home/circleci/.financial-analysis/bin/activate
+            make test
+            make lint
 
 workflows:
   main:
     jobs:
-      - build-and-test
+      - build-test-lint
