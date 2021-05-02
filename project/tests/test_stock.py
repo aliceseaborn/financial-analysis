@@ -22,7 +22,7 @@ import pandas as pd
 import numpy as np
 
 
-__author__ = "Austin Dial, Alice Seaborn"
+__author__ = "Alice Seaborn"
 
 __version__ = "0.0.0"
 __maintainer__ = "Alice Seaborn"
