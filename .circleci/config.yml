@@ -1,20 +1,23 @@
 version: 2.1
 
+orbs:
+  python: circleci/python@0.2.1
+
 jobs:
-  build-test:
-    docker:
-      - image: circleci/python:3.8.8
+  build-and-test:
+    executor: python/default
     steps:
       - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
       - run:
+          name: 
           command: |
-            sudo pip install pipenv
-            pipenv install
-            pipenv run python3 pytest -vv --cov=project
-            pipenv run black project/domain/*.py
-            pipenv run pylint --disable=R,C,W project/domain/*.py
-
+            make setup
+            source ~/.udemy/bin/activate
+            make all
 workflows:
   main:
     jobs:
-      - build-test
+      - build-and-test
