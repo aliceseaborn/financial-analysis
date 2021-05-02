@@ -22,11 +22,11 @@ import pandas as pd
 import numpy as np
 
 
-__author__ = "Austin Dial, Alice Seaborn"
+__author__ = "Alice Seaborn"
 
 __version__ = "0.0.0"
 __maintainer__ = "Alice Seaborn"
-__email__ = "seaborn.archipelago@gmail.com"
+__email__ = "seaborn.dev@gmail.com"
 __status__ = "Prototype"
 
 
@@ -36,7 +36,7 @@ test_index_path = "project/tests/data/^INDX.csv"
 
 
 
-class TestInitialization(object):
+class Test_Initialization(object):
     
     def test_stock_type(self):
         

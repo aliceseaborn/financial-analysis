@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
 setup(
-    name         = "testing",
+    name         = "financial-analysis",
     version      = "0.1",
-    description  = "Demonstrates how to build a testing framework in python.",
-    author       = "Austin Dial",
-    author_email = "adial@mail.bradley.edu",
+    description  = "Python based portfolio and stock analysis platform.",
+    author       = "Alice Seaborn",
+    author_email = "seaborn.dev@gmail.com",
     packages     = find_packages()
 )

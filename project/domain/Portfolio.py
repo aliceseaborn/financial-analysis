@@ -11,11 +11,11 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from matplotlib.cm import ScalarMappable
 
-__author__ = "Austin Dial, Alice Seaborn"
+__author__ = "Alice Seaborn"
 
 __version__ = "0.0.0"
 __maintainer__ = "Alice Seaborn"
-__email__ = "seaborn.archipelago@gmail.com"
+__email__ = "seaborn.dev@gmail.com"
 __status__ = "Prototype"
 
 
@@ -72,7 +72,7 @@ class Portfolio(object):
     
     
     def daily_excess_rates_of_return(self, risk_free_rate, start_date=None, end_date=None):
-        """Calculates the combined portfolio returns after considering the 
+        """Calculates the combined portfolio returns after considering the
         risk free rate of return. This represents the excess returns the
         portfolio yields as a result of taking risk.
 
@@ -320,8 +320,3 @@ class Portfolio(object):
         plt.close()
 
         return data
-
-
-
-
-
