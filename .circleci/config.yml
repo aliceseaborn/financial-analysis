@@ -1,7 +1,7 @@
-version: 2
+version: 2.1
 
 jobs:
-  build-test-lint:
+  build-test:
     working_directory: /home/circleci
     docker:
       - image: circleci/python:3.8.8
@@ -17,4 +17,4 @@ jobs:
 workflows:
   main:
     jobs:
-      - build-test-lint
+      - build-test
