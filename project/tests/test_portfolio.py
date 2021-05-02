@@ -269,11 +269,11 @@ class Test_SharpeRatio(object):
 
 class Test_MarkowitzEfficientFrontier(object):
     portfolio = _instantiate_portfolio()
-    result = portfolio.markowitz_efficient_frontier(1000, risk_free_rate, test_figures_path,
+    result = portfolio.markowitz_efficient_frontier(100, risk_free_rate, test_figures_path,
                                                     start_date, end_date)
     
     def test_marko_length(self):
-        assert len(self.result) == 1000
+        assert len(self.result) == 100
         
     def test_marko_weights_length(self):
         assert len(self.result[0]["Weights"]) == len(self.portfolio.stocks)
