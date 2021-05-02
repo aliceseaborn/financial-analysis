@@ -19,7 +19,7 @@ install:
 		pip install -r requirements.txt
 		
 test:
-	python -m pytest -vv --cov=project/domain tests/*.py
+	python -m pytest -vv --cov=project/domain project/tests/*.py
 	
 lint:
 	black */*.py
