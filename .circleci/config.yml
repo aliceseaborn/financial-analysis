@@ -8,8 +8,8 @@ jobs:
       - checkout
       - run:
           command: |
-            make setup
-            . /home/circleci/.financial-analysis/bin/activate
+            sudo pip install pipenv
+            pipenv install
             make test
             make lint
 
