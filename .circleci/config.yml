@@ -16,7 +16,8 @@ jobs:
           command: |
             make setup
             source ~/.financial-tools/bin/activate
-            make all
+            make install
+            make test
 workflows:
   main:
     jobs:
