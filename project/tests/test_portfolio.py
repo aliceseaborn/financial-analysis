@@ -238,7 +238,7 @@ class Test_Beta(object):
     
     def test_beta_value(self):
         result = self.portfolio.beta(self.index, start_date, end_date)
-        assert result == 0.4315856457690674
+        assert result == 0.4315856457690673
 
 
 class Test_SystematicRisk(object):
@@ -247,7 +247,7 @@ class Test_SystematicRisk(object):
     
     def test_systematic_risk_value(self):
         result = self.portfolio.systematic_risk(self.index, start_date, end_date)
-        assert result == 1.608858305994687
+        assert result == 1.608858305994686
 
 
 class Test_IdiosyncraticRisk(object):
@@ -256,7 +256,7 @@ class Test_IdiosyncraticRisk(object):
     
     def test_idiosyncratic_risk_value(self):
         result = self.portfolio.idiosyncratic_risk(self.index, start_date, end_date)
-        assert result == 1.6086726668290696
+        assert result == 1.6086726668290694
 
 
 class Test_SharpeRatio(object):
