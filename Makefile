@@ -12,7 +12,7 @@
 # 	pylint --disable=R,C,W project/domain/*.py
 
 setup:
-	python3 -m venv ~/.udemy
+	python3 -m venv ~/.financial-tools
 	
 install:
 	pip install --upgrade pip &&\
