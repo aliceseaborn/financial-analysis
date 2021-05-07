@@ -247,7 +247,7 @@ class Test_SystematicRisk(object):
     
     def test_systematic_risk_value(self):
         result = self.portfolio.systematic_risk(self.index, start_date, end_date)
-        assert result == 1.608858305994686
+        assert result == 1.6088583059946866
 
 
 class Test_IdiosyncraticRisk(object):
