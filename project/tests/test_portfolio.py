@@ -238,7 +238,7 @@ class Test_Beta(object):
     
     def test_beta_value(self):
         result = self.portfolio.beta(self.index, start_date, end_date)
-        assert result == 0.4315856457690674
+        assert result == 0.4315856457690673
 
 
 class Test_SystematicRisk(object):
@@ -247,7 +247,7 @@ class Test_SystematicRisk(object):
     
     def test_systematic_risk_value(self):
         result = self.portfolio.systematic_risk(self.index, start_date, end_date)
-        assert result == 1.608858305994687
+        assert result == 1.6088583059946866
 
 
 class Test_IdiosyncraticRisk(object):
@@ -256,7 +256,7 @@ class Test_IdiosyncraticRisk(object):
     
     def test_idiosyncratic_risk_value(self):
         result = self.portfolio.idiosyncratic_risk(self.index, start_date, end_date)
-        assert result == 1.6086726668290696
+        assert result == 1.6086726668290694
 
 
 class Test_SharpeRatio(object):
@@ -269,11 +269,11 @@ class Test_SharpeRatio(object):
 
 class Test_MarkowitzEfficientFrontier(object):
     portfolio = _instantiate_portfolio()
-    result = portfolio.markowitz_efficient_frontier(1000, risk_free_rate, test_figures_path,
+    result = portfolio.markowitz_efficient_frontier(100, risk_free_rate, test_figures_path,
                                                     start_date, end_date)
     
     def test_marko_length(self):
-        assert len(self.result) == 1000
+        assert len(self.result) == 100
         
     def test_marko_weights_length(self):
         assert len(self.result[0]["Weights"]) == len(self.portfolio.stocks)

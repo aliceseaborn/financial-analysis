@@ -15,9 +15,9 @@ jobs:
           name: 
           command: |
             make setup
-            source ~/.udemy/bin/activate
-            make all
-
+            source ~/.financial-tools/bin/activate
+            make install
+            make test
 workflows:
   main:
     jobs:
